@@ -15,3 +15,5 @@ application.properties中默认配置为开发环境:spring.profiles.active=dev
 #接口文档
 通过http://127.0.0.1:8080/sb/swagger-ui.html访问swagger文档
 
+#访问控制 用户/密码 : admin/admin
+
