@@ -1,12 +1,12 @@
-package com.sbtest.SpringBootTest;
+package com.sbtest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootTestApplication {
+public class App {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootTestApplication.class, args);
+		SpringApplication.run(App.class, args);
 	}
 }

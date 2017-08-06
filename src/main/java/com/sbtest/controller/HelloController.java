@@ -1,6 +1,9 @@
 package com.sbtest.controller;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -8,9 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@EnableAutoConfiguration
 public class HelloController {
+
+    @Value("${com.sbtest.controller.HelloController.name}")
+    private String name;
+
+    @Value("${com.sbtest.controller.HelloController.age}")
+    private int age;
+
     @RequestMapping("/hello")
+    @ResponseBody
     public String index() {
-        return "Hello World";
+        return "Hello " + name + " " + age;
+
     }
 }
