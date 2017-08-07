@@ -2,6 +2,8 @@ package com.sbtest.controller;
 
 import com.sbtest.dto.Voucher;
 import com.sbtest.service.VoucherServcie;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +24,8 @@ public class HelloController {
     @Value("${com.sbtest.controller.HelloController.age}")
     private int age;
 
+    private static final Logger logger = LoggerFactory.getLogger(HelloController.class);
+
     @Resource
     VoucherServcie voucherServcie;
 
@@ -37,5 +41,15 @@ public class HelloController {
         System.out.println("getVoucher : " + userId);
         Voucher voucher = voucherServcie.getVoucher(userId);
         return voucher;
+    }
+
+    @RequestMapping("log")
+    @ResponseBody
+    public String testLog(){
+        logger.info("log info...........");
+        logger.warn("log warn...........");
+        logger.error("log error...........");
+        logger.debug("log debug...........");
+        return "OK";
     }
 }
