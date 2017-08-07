@@ -3,6 +3,7 @@ package com.sbtest.datasource;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +17,20 @@ import java.sql.SQLException;
  */
 @Configuration
 public class DataSourcesConfig {
+
+    @Value("${datasource.url}")
+    private String datasourceUrl;
+
+    @Value("${datasource.username}")
+    private String datasourceUsername;
+
+    @Value("${datasource.password}")
+    private String datasourcePassword;
+
+    @Value("${datasource.driver}")
+    private String datasourceDriver;
     /**
      * druid初始化
-     *
      * @return
      * @throws SQLException
      */
@@ -26,10 +38,10 @@ public class DataSourcesConfig {
     @Bean(name = "dataSource", destroyMethod = "close")
     public DruidDataSource Construction() throws SQLException {
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setUrl("jdbc:mysql://172.17.100.14:33066/game_paycenter");
-        dataSource.setUsername("appstore");
-        dataSource.setPassword("");
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl(datasourceUrl);
+        dataSource.setUsername(datasourceUsername);
+        dataSource.setPassword(datasourcePassword);
+        dataSource.setDriverClassName(datasourceDriver);
         //配置最大连接
         dataSource.setMaxActive(20);
         //配置初始连接
@@ -69,8 +81,8 @@ public class DataSourcesConfig {
         ServletRegistrationBean reg = new ServletRegistrationBean();
         reg.setServlet(new StatViewServlet());
         reg.addUrlMappings("/druid/*");
-        //reg.addInitParameter("allow", "127.0.0.1");
-        //reg.addInitParameter("deny","");
+        reg.addInitParameter("allow", "127.0.0.1");
+        reg.addInitParameter("deny","");
         reg.addInitParameter("loginUsername", "niuli");
         reg.addInitParameter("loginPassword", "123456");
         return reg;
