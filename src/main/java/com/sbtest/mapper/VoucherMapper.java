@@ -1,17 +1,17 @@
 package com.sbtest.mapper;
 
-import com.sbtest.dto.User;
+import com.sbtest.dto.Voucher;
 import org.mapstruct.Mapper;
 
 /**
  * Created by zhangyaping on 17/8/7.
  */
 @Mapper
-public interface UserMapper {
+public interface VoucherMapper {
     /**
      * 根据id查询用户
-     * @param id
+     * @param userId
      * @return
      */
-    User findById(int id);
+    Voucher getVoucher(String userId);
 }
