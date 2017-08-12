@@ -1,5 +1,6 @@
 /.idea
 /mvnw
+/logs
 /mvnw.cmd
 /SpringBootTest.iml
 /target

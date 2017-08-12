@@ -6,4 +6,5 @@ public interface VoucherServcie {
 
     Voucher getVoucher(String userId);
 
+    void testLog();
 }

@@ -32,6 +32,7 @@ public class HelloController {
     @RequestMapping("/hello")
     @ResponseBody
     public String index() {
+
         return "Hello " + name + " " + age;
     }
 
@@ -50,6 +51,8 @@ public class HelloController {
         logger.warn("log warn...........");
         logger.error("log error...........");
         logger.debug("log debug...........");
+
+        voucherServcie.testLog();
         return "OK";
     }
 }
