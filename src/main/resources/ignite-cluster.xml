@@ -5,7 +5,8 @@
        http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="spring-ignite.xml" />
-    <import resource="ignite-cluster.xml" />
+    <!-- default cfg -->
+    <bean id="cluster.grid.cfg" class="org.apache.ignite.configuration.IgniteConfiguration">
+    </bean>
 
 </beans>
