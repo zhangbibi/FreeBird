@@ -18,10 +18,10 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
-import java.util.Properties;
 
 /**
  * mybatis配置类
+ *
  * @author Niu Li
  * @date 2016/8/12
  */
@@ -31,35 +31,12 @@ public class MybatisConfig implements TransactionManagementConfigurer {
     @Resource(name = "dataSource")
     DataSource dataSource;
 
-    /**
-     * 可以通过这个类,详细配置mybatis
-     * @return
-     */
-//    @Bean
-//    public org.apache.ibatis.session.Configuration mybatisSetting(){
-//        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
-//
-//        return null;
-//    }
-
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactoryBean() {
 
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setTypeAliasesPackage("com.sbtest.mapper");
-
-        //分页插件,插件无非是设置mybatis的拦截器
-//        PageHelper pageHelper = new PageHelper();
-//        Properties properties = new Properties();
-//        properties.setProperty("reasonable", "true");
-//        properties.setProperty("supportMethodsArguments", "true");
-//        properties.setProperty("returnPageInfo", "check");
-//        properties.setProperty("params", "count=countSql");
-//        pageHelper.setProperties(properties);
-
-        //添加插件
-//        bean.setPlugins(new Interceptor[]{pageHelper});
 
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
@@ -68,12 +45,13 @@ public class MybatisConfig implements TransactionManagementConfigurer {
             bean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
             return bean.getObject();
         } catch (Exception e) {
-            throw new RuntimeException("sqlSessionFactory init fail",e);
+            throw new RuntimeException("sqlSessionFactory init fail", e);
         }
     }
 
     /**
      * 用于实际查询的sql工具,传统dao开发形式可以使用这个,基于mapper代理则不需要注入
+     *
      * @param sqlSessionFactory
      * @return
      */
@@ -81,6 +59,7 @@ public class MybatisConfig implements TransactionManagementConfigurer {
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
+
     /**
      * 事务管理,具体使用在service层加入@Transactional注解
      */

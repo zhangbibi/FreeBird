@@ -6,6 +6,16 @@ public class Voucher {
     private String vouId;
     private String userId;
 
+    public Voucher(){
+
+    }
+
+    public Voucher(String vouName, String vouId, String userId) {
+        this.vouName = vouName;
+        this.vouId = vouId;
+        this.userId = userId;
+    }
+
     public String getVouName() {
         return vouName;
     }
