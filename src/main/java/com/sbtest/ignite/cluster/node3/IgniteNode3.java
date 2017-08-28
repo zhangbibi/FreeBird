@@ -29,7 +29,6 @@ public class IgniteNode3 {
         while (it.hasNext()) {
             ClusterNode clusterNode = it.next();
             System.out.println("ClusterServer ---> getClusterNode" + clusterNode.toString());
-
         }
 
     }
