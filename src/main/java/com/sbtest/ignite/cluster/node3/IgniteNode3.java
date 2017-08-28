@@ -30,7 +30,6 @@ public class IgniteNode3 {
             ClusterNode clusterNode = it.next();
             System.out.println("ClusterServer ---> getClusterNode" + clusterNode.toString());
         }
-
     }
 
     public static void main(String[] args) {
