@@ -2,6 +2,7 @@ package com.sbtest.ignite.cluster.node3;
 
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCluster;
+import org.apache.ignite.IgniteCompute;
 import org.apache.ignite.Ignition;
 import org.apache.ignite.cluster.ClusterGroup;
 import org.apache.ignite.cluster.ClusterMetrics;
@@ -17,17 +18,18 @@ public class IgniteNode3 {
 
     public static void startIgnite() {
 
-        Ignite ignite = Ignition.start("/Users/zhangyaping/workspace/SpringBootTest/src/main/java/com/sbtest/ignite/cluster/node3/ignite-node3.xml");
+        Ignite ignite = Ignition.start("C:\\workspace\\SpringBootTest\\src\\main\\java\\com\\sbtest\\ignite\\cluster\\node3\\ignite-node3.xml");
 
-        ClusterGroup workers = ignite.cluster().forServers();
-        Collection<ClusterNode> nodes = workers.nodes();
+        ClusterGroup servers = ignite.cluster().forRemotes();
+        Collection<ClusterNode> nodes = servers.nodes();
+        IgniteCompute serverCompute = ignite.compute(servers);
+        serverCompute.broadcast(() -> System.out.println("Hello node: " + ignite.cluster().localNode().id()));
 
         Iterator<ClusterNode> it = nodes.iterator();
         while (it.hasNext()) {
-            System.out.println("-------------------");
             ClusterNode clusterNode = it.next();
-
             System.out.println("ClusterServer ---> getClusterNode" + clusterNode.toString());
+
         }
 
     }

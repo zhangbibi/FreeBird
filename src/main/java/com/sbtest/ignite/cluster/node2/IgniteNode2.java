@@ -9,7 +9,7 @@ import org.apache.ignite.Ignition;
 public class IgniteNode2 {
 
     public static void startIgnite() {
-        Ignite ignite = Ignition.start("/Users/zhangyaping/workspace/SpringBootTest/src/main/java/com/sbtest/ignite/cluster/node2/ignite-node2.xml");
+        Ignite ignite = Ignition.start("C:\\workspace\\SpringBootTest\\src\\main\\java\\com\\sbtest\\ignite\\cluster\\node2\\ignite-node2.xml");
     }
 
     public static void main(String[] args) {

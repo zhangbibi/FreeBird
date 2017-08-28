@@ -16,7 +16,7 @@ import java.util.Collection;
 public class IgniteNode1 {
 
     public static void startIgnite() {
-        Ignite ignite = Ignition.start("/Users/zhangyaping/workspace/SpringBootTest/src/main/java/com/sbtest/ignite/cluster/node1/ignite-node1.xml");
+        Ignite ignite = Ignition.start("C:\\workspace\\SpringBootTest\\src\\main\\java\\com\\sbtest\\ignite\\cluster\\node1\\ignite-node1.xml");
     }
 
     public static void main(String[] args) {
