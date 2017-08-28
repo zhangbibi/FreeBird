@@ -1,10 +1,13 @@
 package com.sbtest.service.impl;
 
 import com.sbtest.dto.Voucher;
+import com.sbtest.mapper.VoucherMapper;
 import com.sbtest.service.VoucherServcie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service
 public class VoucherServiceImpl implements VoucherServcie{
