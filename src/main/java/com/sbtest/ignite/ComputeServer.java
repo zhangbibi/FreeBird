@@ -19,7 +19,7 @@ public class ComputeServer {
     public static void compute() {
 
         // Create new configuration.
-        IgniteConfiguration cfg = (IgniteConfiguration) SpringContextUtil.getBean("grid.cfg");
+        IgniteConfiguration cfg = (IgniteConfiguration) SpringContextUtil.getBean("grid.cfg.server");
 
         try (Ignite ignite = Ignition.start(cfg);) {
 

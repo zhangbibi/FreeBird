@@ -14,6 +14,14 @@
         </property>
     </bean>
 
+    <bean id="grid.cfg.server" class="org.apache.ignite.configuration.IgniteConfiguration">
+        <property name="communicationSpi">
+            <bean class="org.apache.ignite.spi.communication.tcp.TcpCommunicationSpi">
+                <property name="slowClientQueueLimit" value="1000"/>
+            </bean>
+        </property>
+    </bean>
+
     <!-- ignite cache cfg -->
     <bean id="ignite.cache.cfg" class="org.apache.ignite.configuration.IgniteConfiguration">
         <!--<property name="clientMode" value="true"/>-->
