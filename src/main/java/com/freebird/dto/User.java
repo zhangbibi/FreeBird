@@ -7,7 +7,7 @@ public class User {
 
     private Long id;
     private String username;
-    private Integer password;
+    private String password;
 
     public Long getId() {
         return id;
@@ -25,11 +25,11 @@ public class User {
         this.username = username;
     }
 
-    public Integer getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Integer password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 }
