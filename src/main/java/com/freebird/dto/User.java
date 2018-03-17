@@ -6,8 +6,8 @@ package com.freebird.dto;
 public class User {
 
     private Long id;
-    private String name;
-    private Integer age;
+    private String username;
+    private Integer password;
 
     public Long getId() {
         return id;
@@ -17,19 +17,19 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public Integer getAge() {
-        return age;
+    public Integer getPassword() {
+        return password;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setPassword(Integer password) {
+        this.password = password;
     }
 }

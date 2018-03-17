@@ -1,6 +1,6 @@
 package com.freebird.service.impl;
 
-import com.freebird.dto.Voucher;
+import com.freebird.dto.User;
 import com.freebird.mapper.VoucherMapper;
 import com.freebird.service.VoucherServcie;
 import org.slf4j.Logger;
@@ -16,7 +16,7 @@ public class VoucherServiceImpl implements VoucherServcie{
     @Resource
     VoucherMapper mapper;
     @Override
-    public Voucher getVoucher(String userId) {
+    public User getVoucher(String userId) {
         return mapper.getVoucher(userId);
     }
 

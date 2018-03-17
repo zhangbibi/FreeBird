@@ -1,6 +1,6 @@
 package com.freebird.mapper;
 
-import com.freebird.dto.Voucher;
+import com.freebird.dto.User;
 
 /**
  * Created by zhangyaping on 17/8/7.
@@ -11,5 +11,5 @@ public interface VoucherMapper {
      * @param userId
      * @return
      */
-    Voucher getVoucher(String userId);
+    User getVoucher(String userId);
 }

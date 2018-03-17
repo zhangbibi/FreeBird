@@ -1,6 +1,6 @@
 package com.freebird.controller;
 
-import com.freebird.dto.Voucher;
+import com.freebird.dto.User;
 import com.freebird.service.VoucherServcie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,9 +38,9 @@ public class HelloController {
 
     @RequestMapping(value = "/voucher/{userId}", method = RequestMethod.GET)
     @ResponseBody
-    public Voucher getVoucher(@PathVariable String userId) {
+    public User getVoucher(@PathVariable String userId) {
         System.out.println("getVoucher : " + userId);
-        Voucher voucher = voucherServcie.getVoucher(userId);
+        User voucher = voucherServcie.getVoucher(userId);
         return voucher;
     }
 

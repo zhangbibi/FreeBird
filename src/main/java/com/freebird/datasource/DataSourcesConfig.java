@@ -60,8 +60,6 @@ public class DataSourcesConfig {
         //打开PSCache,并指定每个连接的PSCache大小
         dataSource.setPoolPreparedStatements(true);
         dataSource.setMaxOpenPreparedStatements(20);
-        //配置sql监控的filter
-        dataSource.setFilters("stat,wall,log4j");
         try {
             dataSource.init();
         } catch (SQLException e) {
@@ -70,32 +68,4 @@ public class DataSourcesConfig {
         return dataSource;
     }
 
-   /* *//**
-     * druid监控
-     * @return
-     *//*
-    @Bean
-    public ServletRegistrationBean druidServlet() {
-        ServletRegistrationBean reg = new ServletRegistrationBean();
-        reg.setServlet(new StatViewServlet());
-        reg.addUrlMappings("/druid*//*");
-        reg.addInitParameter("allow", "127.0.0.1");
-        reg.addInitParameter("deny","");
-        reg.addInitParameter("loginUsername", "niuli");
-        reg.addInitParameter("loginPassword", "123456");
-        return reg;
-    }
-
-    *//**
-     * druid监控过滤
-     * @return
-     *//*
-    @Bean
-    public FilterRegistrationBean filterRegistrationBean() {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        filterRegistrationBean.setFilter(new WebStatFilter());
-        filterRegistrationBean.addUrlPatterns("*//*");
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid*//*");
-        return filterRegistrationBean;
-    }*/
 }
