@@ -1,14 +1,14 @@
-package com.freebird.common.util;
+package com.freebird.wx.common.util;
 
+import com.freebird.wx.common.message.resp.Article;
+import com.freebird.wx.common.message.resp.MusicMessage;
+import com.freebird.wx.common.message.resp.NewsMessage;
+import com.freebird.wx.common.message.resp.TextMessage;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.core.util.QuickWriter;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
 import com.thoughtworks.xstream.io.xml.XppDriver;
-import com.threeguys.common.message.resp.Article;
-import com.threeguys.common.message.resp.MusicMessage;
-import com.threeguys.common.message.resp.NewsMessage;
-import com.threeguys.common.message.resp.TextMessage;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
@@ -103,7 +103,7 @@ public class MessageUtil {
 		Map<String, String> map = new HashMap<String, String>();
 		// 从request中取得输入流
 		InputStream inputStream = request.getInputStream();
-		map = parseXmlFromStream(inputStream);
+//		map = parseXmlFromStream(inputStream);
 		return map;
 	}
 

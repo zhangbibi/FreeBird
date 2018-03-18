@@ -168,18 +168,18 @@ public class WeixinTemplateNotice {
 		return new Gson().toJson(paramMap);
 	}
 
-	public static void main(String[] args) {
-		CommonNoticeBean bean = new WeixinTemplateNotice().new CommonNoticeBean();
-		bean.setFirst("first");
-		bean.setKeyword1("keyword1");
-		bean.setKeyword2("keyword2");
-		bean.setKeyword3("keyword3");
-		bean.setRemark("remark");
-		bean.setTouser("osTWmw4TstzvR1osvYmqOb_1EVAc");
-		bean.setTemplate_id(TemplateIDENUM.USER_PAY_NOTICE_TEMPID.toString());
-		bean.setUrl("www.baidu.com");
-		String access_token = "jghu4CG1YvS3znwSUtPx0gfGJ-AMs_9l9N5GwygR14kcor04UkA77IQH_YbMUIiIVExb8ChOAw5k_Gpm4Z5pIBaoEzJ4jepct0qNWYZXu9tey9daitedX_Mse_OX2fKoWWXhADAAAB";
-		System.out.println(WeixinTemplateNotice.sendCommonNotice(bean,
-				access_token));
-	}
+//	public static void main(String[] args) {
+//		CommonNoticeBean bean = new WeixinTemplateNotice().new CommonNoticeBean();
+//		bean.setFirst("first");
+//		bean.setKeyword1("keyword1");
+//		bean.setKeyword2("keyword2");
+//		bean.setKeyword3("keyword3");
+//		bean.setRemark("remark");
+//		bean.setTouser("osTWmw4TstzvR1osvYmqOb_1EVAc");
+//		bean.setTemplate_id(TemplateIDENUM.USER_PAY_NOTICE_TEMPID.toString());
+//		bean.setUrl("www.baidu.com");
+//		String access_token = "jghu4CG1YvS3znwSUtPx0gfGJ-AMs_9l9N5GwygR14kcor04UkA77IQH_YbMUIiIVExb8ChOAw5k_Gpm4Z5pIBaoEzJ4jepct0qNWYZXu9tey9daitedX_Mse_OX2fKoWWXhADAAAB";
+//		System.out.println(WeixinTemplateNotice.sendCommonNotice(bean,
+//				access_token));
+//	}
 }

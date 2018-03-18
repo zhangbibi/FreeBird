@@ -73,7 +73,7 @@ public class PropertiesUtils {
 		String value = getPropertyValues(key);
 		return value==null ? defaultValue : value;
   }
-  public static void main(String[] args) {
-	String  s = PropertiesUtils.getPropertyValues("wx.appId");
-  }
+//  public static void main(String[] args) {
+//	String  s = PropertiesUtils.getPropertyValues("wx.appId");
+//  }
 }

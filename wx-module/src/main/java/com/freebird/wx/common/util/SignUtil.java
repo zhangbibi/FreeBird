@@ -136,7 +136,7 @@ public class SignUtil {
         return Long.toString(System.currentTimeMillis() / 1000);
     }
 
-	public static void main(String[] args) {
-		System.out.println(UUID.randomUUID().toString().replace("-", ""));
-	}
+//	public static void main(String[] args) {
+//		System.out.println(UUID.randomUUID().toString().replace("-", ""));
+//	}
 }
