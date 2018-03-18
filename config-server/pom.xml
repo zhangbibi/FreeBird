@@ -10,19 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.freebird</groupId>
-    <artifactId>fb-module</artifactId>
+    <artifactId>config-server</artifactId>
 
     <dependencies>
-        <!-- security -->
+        <!-- config-server-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
-        <!-- config-client-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-config-client</artifactId>-->
-        <!--</dependency>-->
     </dependencies>
-
 </project>
