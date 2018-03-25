@@ -1,4 +1,6 @@
-# FreeBird  学习spring boot
+# FreeBird  
+
+
 
 # 配置与打包
 application.properties是各环境共用的配置文件
