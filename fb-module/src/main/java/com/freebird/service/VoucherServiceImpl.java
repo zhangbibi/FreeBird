@@ -1,8 +1,7 @@
-package com.freebird.service.impl;
+package com.freebird.service;
 
 import com.freebird.dto.User;
 import com.freebird.mapper.VoucherMapper;
-import com.freebird.service.VoucherServcie;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
