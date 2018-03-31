@@ -1,21 +1,22 @@
 package com.freebird.wx.common.wx;
 
 
-import com.freebird.wx.common.util.LogUtils;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by zhangyaping on 16-7-19.
  */
 public class WeixinUrlFactory {
 
-    private static Logger logger = LogUtils.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(WeixinUrlFactory.class);
 
     private WeixinUtil weixinUtil = WeixinUtilFactory.getInstance();
 
     private static WeixinUrlFactory instance = new WeixinUrlFactory();
 
-    private WeixinUrlFactory() {}
+    private WeixinUrlFactory() {
+    }
 
     public static WeixinUrlFactory getInstance() {
         return instance;

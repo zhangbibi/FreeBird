@@ -2,6 +2,7 @@ package com.freebird.wx.common.util;
 
 import org.apache.commons.lang.SerializationUtils;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -27,21 +28,32 @@ public class RedisClientUtil {
 
 	private static int jedisPort = 0;
 
-	private static String jedisPassword = null;
-
 	private static boolean testOnBorrow = false;
 
 	private static int jedisTimeout = 0;
 
+
+	@Value("${redis.ip}")
+	private static String redisIp;
+	@Value("${redis.port}")
+	private static String redisPort;
+	@Value("${redis.timeout}")
+	private static String redisTimeOut;
+	@Value("${redis.maxIdle}")
+	private static String maxIdle_;
+	@Value("${redis.maxTotal}")
+	private static String maxTotal_;
+	@Value("${redis.minIdle}")
+	private static String minIdle_;
+	@Value("${redis.usePool}")
+	private static String usePool_;
+	@Value("${redis.testOnBorrow}")
+	private static String testOnBorrow_;
+	@Value("${redis.password}")
+	private static String jedisPassword;
+
+
 	static {
-		String redisIp = PropertiesUtils.getPropertyValues("redis.ip");
-		String redisPort = PropertiesUtils.getPropertyValues("redis.port");
-		String redisTimeOut = PropertiesUtils.getPropertyValues("redis.timeout");
-		String maxIdle_ = PropertiesUtils.getPropertyValues("redis.maxIdle");
-		String maxTotal_ = PropertiesUtils.getPropertyValues("redis.maxTotal");
-		String minIdle_ = PropertiesUtils.getPropertyValues("redis.minIdle");
-		String usePool_ = PropertiesUtils.getPropertyValues("redis.usePool");
-		String testOnBorrow_ = PropertiesUtils.getPropertyValues("redis.testOnBorrow");
 
 		testOnBorrow_ = StringUtils.isBlank(testOnBorrow_) ? "false" : testOnBorrow_;
 		int port = (new Integer(redisPort)).intValue();
@@ -55,7 +67,6 @@ public class RedisClientUtil {
 		jedisIp = redisIp; //连接IP
 		jedisPort = port; //连接端口
 		jedisTimeout = timeOut; // 连接超时时间，毫秒
-		jedisPassword = PropertiesUtils.getPropertyValues("redis.password");
 
 	}
 
@@ -90,8 +101,6 @@ public class RedisClientUtil {
 
 	/**
 	 * 私有方法:关闭/释放Jedis连接
-	 * @param key 键
-	 * @param value 值
 	 * @throws JedisException
 	 */
 	private static void closeJedis(Jedis p) {
@@ -307,7 +316,6 @@ public class RedisClientUtil {
 	/**
 	 * 公共方法：给redis中某个list队列头增加一个元素。
 	 * <p>注意:list中的元素是可以重复的</p>
-	 * @param set 集合
 	 * @param key key
 	 * @param data 插入的值
 	 * @throws JedisException
@@ -327,7 +335,6 @@ public class RedisClientUtil {
 	/**
 	 * 公共方法：给redis中某个list队列尾增加一个元素。
 	 * <p>注意:list中的元素是可以重复的</p>
-	 * @param set 集合
 	 * @param key key
 	 * @param data 插入的值
 	 * @throws JedisException
@@ -511,7 +518,6 @@ public class RedisClientUtil {
 	/**
 	 * redis中指定key的set长度
 	 * @param key
-	 * @param value
 	 * @return
 	 */
 	public static int scard(String key){
@@ -570,7 +576,6 @@ public class RedisClientUtil {
 	/**
 	 * value自增
 	 * @param key
-	 * @param value
 	 * @return
 	 */
 	public static int incr(String key){
@@ -590,7 +595,6 @@ public class RedisClientUtil {
 	/**
 	 * Redis中是否存在key
 	 * @param key
-	 * @param value
 	 * @return
 	 */
 	public static boolean exists(String key){
@@ -609,8 +613,6 @@ public class RedisClientUtil {
 
 	/**
 	 * Redis Set的并集SUNION
-	 * @param key
-	 * @param value
 	 * @return
 	 */
 	public static Set<String> sunion(String... keys){
@@ -629,8 +631,6 @@ public class RedisClientUtil {
 
 	/**
 	 * Redis Set的交集 SINTER
-	 * @param key
-	 * @param value
 	 * @return
 	 */
 	public static Set<String> sinter(String... keys){

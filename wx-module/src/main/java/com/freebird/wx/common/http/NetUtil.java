@@ -1,6 +1,5 @@
 package com.freebird.wx.common.http;
 
-import com.freebird.wx.common.util.LogUtils;
 import com.google.gson.Gson;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.client.ClientProtocolException;
@@ -23,6 +22,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -40,7 +40,8 @@ public class NetUtil {
     private int connect_max_total = 800;
     private int connect_max_per_route = 500;
     private PoolingHttpClientConnectionManager poolConnManager = null;
-    private Logger log = LogUtils.getLogger();
+    private static final Logger log = LoggerFactory.getLogger(NetUtil.class);
+
     private Gson gson = new Gson();
     private String UTF8 = "utf-8";
     private IdleConnectionMonitorThread idleConnectionMonitorThread = null;

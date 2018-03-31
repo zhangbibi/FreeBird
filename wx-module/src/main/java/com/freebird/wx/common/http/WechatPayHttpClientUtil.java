@@ -1,7 +1,5 @@
 package com.freebird.wx.common.http;
 
-import com.freebird.wx.common.util.LogUtils;
-import com.freebird.wx.common.util.PropertiesUtils;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
@@ -17,6 +15,9 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.net.ssl.SSLContext;
 import java.io.File;
@@ -30,7 +31,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class WechatPayHttpClientUtil {
 
-    private final static org.slf4j.Logger logger = LogUtils.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(WechatPayHttpClientUtil.class);
 
     private int socket_timeout = 8000;
     private int connect_timeout = 8000;
@@ -39,6 +40,13 @@ public class WechatPayHttpClientUtil {
     private int connect_max_per_route = 500;
     private PoolingHttpClientConnectionManager poolConnManager = null;
     private IdleConnectionMonitorThread idleConnectionMonitorThread = null;
+
+    @Value("${wechat.pay.apiclient.dir}")
+    private String p12Path;
+
+    @Value("${wechat.pay.mchid}")
+    private String password;
+
 
 
     private WechatPayHttpClientUtil() {
@@ -59,8 +67,6 @@ public class WechatPayHttpClientUtil {
 
 //          SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(builder.build(), NoopHostnameVerifier.INSTANCE);
             /*****************************/
-            String p12Path = PropertiesUtils.getPropertyValues("wechat.pay.apiclient.dir", "/data/appuser/apiclient_cert.p12");
-            String password = PropertiesUtils.getPropertyValues("wechat.pay.mchid");
 
             KeyStore keyStore = KeyStore.getInstance("PKCS12");
             FileInputStream instream = new FileInputStream(new File(p12Path));

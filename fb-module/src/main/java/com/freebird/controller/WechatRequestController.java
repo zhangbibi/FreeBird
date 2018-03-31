@@ -1,7 +1,6 @@
 package com.freebird.controller;
 
 import com.freebird.service.WechatRequestService;
-import com.freebird.wx.common.util.ResponseUtil;
 import com.freebird.wx.common.util.SignUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -94,10 +92,10 @@ public class WechatRequestController {
     }
 
     @RequestMapping("/getJSSDKSignature")
-    public ModelAndView getJSSDKSignature(HttpServletRequest req, HttpServletResponse resp) {
+    public Map<String, String> getJSSDKSignature(HttpServletRequest req, HttpServletResponse resp) {
         String url = req.getParameter("currentURL");
         Map<String, String> returnMap = wechatRequestService.getJSSDKSignature(url);
-        return ResponseUtil.outputJsonResponse(req, resp, returnMap);
+        return returnMap;
     }
 
 }

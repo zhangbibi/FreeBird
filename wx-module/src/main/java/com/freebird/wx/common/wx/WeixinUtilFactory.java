@@ -1,7 +1,7 @@
 package com.freebird.wx.common.wx;
 
 
-import com.freebird.wx.common.util.PropertiesUtils;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * 获取微信接口调用工具类的工厂方法
@@ -10,7 +10,13 @@ import com.freebird.wx.common.util.PropertiesUtils;
  */
 public class WeixinUtilFactory {
 
-	private static WeixinUtil utilInstance = new WeixinUtilImpl(PropertiesUtils.getPropertyValues("wx.appId"), PropertiesUtils.getPropertyValues("wx.appsecret"));
+	@Value("${wx.appId}")
+	private static String wxAppId;
+
+	@Value("${wx.appsecret}")
+	private static String wxAppsecret;
+
+	private static WeixinUtil utilInstance = new WeixinUtilImpl(wxAppId, wxAppsecret);
 
 	public static WeixinUtil getInstance() {
 		return utilInstance;

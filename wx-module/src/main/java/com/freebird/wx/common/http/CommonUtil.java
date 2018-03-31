@@ -1,7 +1,7 @@
 package com.freebird.wx.common.http;
 
-import com.freebird.wx.common.util.LogUtils;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
@@ -9,7 +9,7 @@ import java.io.*;
  *
  */
 public class CommonUtil {
-    private static Logger log = LogUtils.getLogger();
+    private static final Logger log = LoggerFactory.getLogger(CommonUtil.class);
 
     public static void safeCloseInputStream(InputStream in) {
         try {

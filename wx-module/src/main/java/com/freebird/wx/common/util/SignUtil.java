@@ -1,6 +1,8 @@
 package com.freebird.wx.common.util;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
 
 import java.security.MessageDigest;
@@ -11,7 +13,10 @@ public class SignUtil {
 	// 与接口配置信息中的Token要一致
 	private static String token = "freebird";
 
-	private static Logger logger = LogUtils.getLogger();
+	private static final Logger logger = LoggerFactory.getLogger(SignUtil.class);
+
+	@Value("${wxpay.apikey}")
+	private static String apiKey;
 
 	/**
 	 * 开发者验证签名接口
@@ -87,7 +92,7 @@ public class SignUtil {
 				sb.append(k + "=" + v + "&");
 			}
 		}
-		sb.append("key=" + PropertiesUtils.getPropertyValues("wxpay.apikey"));
+		sb.append("key=" + apiKey);
 		String sign = MD5Encode(sb.toString(), characterEncoding).toUpperCase();
 		return sign;
 	}
