@@ -51,16 +51,6 @@ public class WeixinUtilImpl implements WeixinUtil {
                 .replace("APPID", this.appId).replace("SECRET", this.secret)
                 .replace("CODE", code);
         try {
-            //[rt_code=200, rt_msg=, data={
-            // "access_token":"ALStohuAESgAyRXEpQsamXiwtEC5bFydaTVCMzkLhPpdrUxZ8UNGipugRrNWe0S7jp1PAiQgJ9vdVXOnn8lvjkZn0pKBYkUjY_XNNaZydDJNbfFb6IjmybvGJFMwLHezWCAhAJASYW",
-            // "expires_in":7200}]
-//			JSONObject jsonObject = HttpRequestUtil.httpsGETRequest(requestURL);
-//			String openid = jsonObject.getString("openid");
-//			String access_token = jsonObject.getString("access_token");
-//			Long expires_in = jsonObject.getLong("expires_in");
-//			String refresh_token = jsonObject.getString("refresh_token");
-//			String scope = jsonObject.getString("scope");
-
             WebAuthAccessToken webAuthAccessToken = new WebAuthAccessToken();
             BusinessResponse<Object> response = NetUtil.getInstance().get(requestURL, MediaType.APPLICATION_JSON);
             if (response.getRt_code() == BusinessResponse.RESPONSE_OK) {
@@ -211,11 +201,6 @@ public class WeixinUtilImpl implements WeixinUtil {
         this.getAccessToken();
         String jsapi_ticket = RedisClientUtil.getString("jsapiTicket");
         return jsapi_ticket;
-    }
-
-    public String getOpenidFromCache(HttpServletRequest httpRequest) {
-        String openid = (String) (httpRequest.getSession().getAttribute("openid"));
-        return openid;
     }
 
     public String getWebAuthAccessTokenFromCache(String openid) {

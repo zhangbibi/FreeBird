@@ -74,7 +74,7 @@ public class WechatRequestService {
         WeixinUtil util = WeixinUtilFactory.getInstance();
         String openid = null;
         String access_token = null;
-        openid = util.getOpenidFromCache(request);
+        openid = ;
         if (StringUtils.isEmpty(openid)) {
             logger.info("WechatRequestServiceImpl.getUserInfoByWebAuth openid is null");
             return null;

@@ -1,0 +1,440 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	overflow-x: hidden;
+	background-color: #fbf9fe;
+	line-height: 1.6;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	height: 100%;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.blog_wrap h2 {
+	border-bottom: 1px solid rgba(150, 145, 145, 0.22);
+    width: 98%;
+    margin: 0 auto;
+}
+
+.blog_wrap h2 #blog_tit {
+	font-size: 18px;
+    margin: 5px 0px 5px 0px;
+    resize: none;
+    overflow-y: hidden;
+    height: 30px;
+    border-radius: 3px;
+    line-height: 16px;
+    padding-left: 5px;
+    width: 98%;
+}
+
+.blog_wrap textarea {
+	border: 1px solid #af6daf;
+	display: block;
+	outline: none;
+	resize: none;
+	padding: 0;
+	padding-top: 15px;
+	word-wrap: break-word;
+	word-break: break-all;
+	border: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	width: 100%;
+	height: 150px;
+	font-size: 18px;
+}
+
+.contentdiv {
+	width: 98%;
+	margin: 0 auto;
+}
+
+.delspan {
+	position: relative;
+    left: 95%;
+    top: 13px;
+    width: 20px;
+}
+.article-content {
+	padding: 15px;
+    background: #fff;
+    border: 1px solid rgba(167, 165, 165, 0.28);
+    min-height: 150px;
+    border-radius: 5px;
+}
+.bottomdiv {
+	background-color: rgb(255, 255, 255);
+	border-top: 1px solid #dedede;
+	padding-top: 10px;
+	width: 100%;
+	height: 35px;
+	padding-left: 10px;
+	position: fixed;
+	bottom: 0;
+}
+
+.pre_btn {
+	background-color: #1db51d;
+    color: white;
+    position: relative;
+    display: inline-block;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-size: 17px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    float: right;
+    right: 22px;
+}
+
+.iconstyle {
+	padding-left: 6px;
+	width: 32px;
+	height: 26px;
+}
+
+.width98 {
+	width: 98%;
+}
+
+
+.width45px {
+	width: 45px;
+}
+
+.pretitle{
+    text-align: center;
+    font-size: 25px;
+    padding: 30px 20px 15px 20px;
+    color: #de7c23;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/*弹出框样式开始*/
+.threeguys_mask {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+.threeguys_dialog {
+  height: 170px;
+  position: fixed;
+  z-index: 13;
+  width: 85%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #FAFAFC;
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.threeguys_dialog_hd {
+  height: 55px;
+  line-height: 55px;
+}
+.threeguys_dialog_bd {
+  height: 70px;
+  line-height: 20px;
+  font-size: 16px;
+  color: #827d7d;
+  padding: 0px 15px 0px 15px;
+}
+.threeguys_dialog_title {
+  font-size: 18px;
+  font-weight: 400;
+}
+.threeguys_dialog_ft {
+  height: 45px;
+  font-size: 18px;
+  border-top: 1px solid rgba(136, 130, 130, 0.39);
+  line-height: 45px;
+}
+.threeguys_btn_dialog {
+  display: inline-block;
+  text-decoration: none;
+  color: rgb(0, 142, 93);
+  width: 45%;
+  height: 100%;
+  font-size: 18px;
+}
+.threeguys_btn_default {
+  color: #929693;
+  border-right: 1px solid rgba(136, 130, 130, 0.39);
+}
+/*弹出框样式结束*/
+
+/*预览页面样式*/
+.paycell1{
+    display: table-cell;
+    vertical-align: middle;
+    padding: 8px 11px 0px 20px;
+}
+.paycell2{
+    vertical-align: middle;
+	font-size: 16px;
+	color: #878a8a;
+}
+.cellimg{
+    width: 20px;
+}
+.distable{
+	display:table;
+}
+.modediv {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 15px 0px 15px 0px;
+    font-size: 16px;
+}
+.mode{
+	display: inline-block;
+    width: 25%;
+}
+.modeselect{
+	background: #2aa515;
+}
+.modeunselect{
+	background: rgba(105, 109, 105, 0.41);
+}
+.payinput{
+	height: 23px;
+    border: 1px solid rgba(42, 165, 21, 0.72);
+    width: 65px;
+    border-radius: 3px;
+    margin: 8px 10px 7px 26px;
+    font-size: 16px;
+    text-align: center;
+}
+.publishbtn{
+    height: 42px;
+    font-size: 20px;
+    line-height: 42px;
+    text-align: center;
+    background: #2aa515;
+    width: 90%;
+    margin: 10px auto 55px auto;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+.modetip {
+    font-size: 16px;
+    padding-left: 20px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(206, 201, 201, 0.25);
+    padding-top: 10px;
+    color: #878a8a;
+}
+.headimg{
+	width: 32px;
+    height: 32px;
+    border-radius: 25px;
+}
+
+.ad{
+    width: 100%;
+    text-align: right;
+    line-height: 50px;
+    height: 50px;
+    background-color: white;
+    border-bottom: 1px solid #f1ebc0;
+    position: fixed;
+    top: 0px;
+}
+.adbtn{
+	width: 50px;
+    display: inline-block;
+    font-size: 13px;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid rgba(230, 167, 63, 0.72);
+    margin-right: 10px;
+    color: #65615d;
+    font-weight: 700;
+}
+.commentdiv{    
+	display: table;
+    width: 100%;
+    border-top: 1px solid rgba(189, 185, 185, 0.35);
+}
+.commentleft{
+    display: table-cell;
+    width: 70px;
+    text-align: center;
+    vertical-align: top;
+    padding: 20px 0px;
+}
+.commentright{
+	display: table-cell;
+    vertical-align: top;
+    padding: 15px 15px 15px 0px;
+}
+.rightspan1{
+	display: block;
+    font-size: 14px;
+    color: #696767;
+    padding-bottom: 5px;
+}
+.amountspan{
+    display: inline-block;
+    width: 70px;
+    border: 1px solid rgba(245, 6, 6, 0.72);
+    border-radius: 6px;
+    margin: 0px 5px 5px 0px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 18px;
+}
+.amountspanselected{
+    background-color: rgba(245, 6, 6, 0.72);
+    color: #FFFFFF;
+}
+.amoutinput{
+	border: 1px solid rgba(245, 6, 6, 0.72);
+    width: 90px;
+    height: 35px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 17px;
+}
+.yuanstyle{
+    font-size: 12px;	
+}
+/*个人页*/
+.userCenter{
+    width: 100%;
+    height: 90px;
+    display: table;
+    background-color: rgba(175, 161, 121, 0.85);
+}
+.user_left{
+    display: table-cell;
+    padding: 10px 0px 0px 20px;
+    vertical-align: middle;
+    width: 80px;
+}
+.user_right{
+	display: table-cell;
+    vertical-align: middle;
+}
+.tab_span{
+	    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 25%;
+}
+.tab_span span{
+	display: block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border-left: 1px solid rgba(132, 132, 132, 0.63);
+}
+.selected_tab{
+	color: #049004;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 2px solid #049004;
+}
+.p_guides{
+	font-size: 14px;
+	display: table;
+    height: 50px;
+    width: 100%;
+}
+.articlediv{
+    display: table;
+    padding: 10px 0px;
+    width: 100%;
+    border-bottom: 1px solid rgba(158, 157, 157, 0.25);
+}
+.tablecell{
+    display: table-cell;
+    vertical-align: middle;
+}
+.articleinfo{
+    padding-left: 20px;
+}
+.span1{
+	font-size: 16px;display: inline-block;
+}
+.span2{
+	font-size: 14px;display: block;color: #888484;
+}
+.span2 span{
+	padding: 0px 10px;
+}
+.span2 img{
+    vertical-align: middle;
+}
+.edit{
+    text-align: right;
+    padding: 0px 10px;
+}
+.edit img{
+	width: 20px;
+    vertical-align: middle;
+}
+.modify{
+    display: inline-block;
+    border: 1px solid #b5acac;
+    font-size: 12px;
+    border-radius: 4px;
+    height: 16px;
+    line-height: 16px;
+    width: 28px;
+    padding: 2px;
+    text-align: center;
+    color: #b5acac;
+    margin-left: 10px;
+}
+.getmore{
+	height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #efeeee;
+    color: #948484;
+    font-size: 15px;
+    font-weight: bold;
+}
+.payheadstyle{
+	width: 30px;
+	margin:0px 2px;	
+}
+.paymentliststyle{
+	width: 90%;
+    margin: 0 auto;
+    padding: 10px 0px 40px 0px;
+}
+.commentstyle{
+	border: 0px solid rgba(167, 171, 167, 0.62);
+    border-radius: 3px;
+    height: 110px;
+    float: left;
+    font-size: 18px;
+    margin: 0 auto;
+    line-height: 35px;
+    padding: 10px 20px;
+    width: 100%;
+}
+.paytips{
+	padding: 15px 20px 5px 20px;
+    color: rgba(119, 103, 103, 0.65);
+    font-size: small;
+    text-align: center;
+}

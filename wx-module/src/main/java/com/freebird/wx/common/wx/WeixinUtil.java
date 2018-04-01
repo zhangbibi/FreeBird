@@ -49,11 +49,6 @@ public interface WeixinUtil {
     public String getTicket();
 
     /**
-     * 请求经过了网页授权后openid会保存在session中缓存起来
-     */
-    public String getOpenidFromCache(HttpServletRequest httpRequest);
-
-    /**
      * 请求经过了网页授权后access_token会保存在redis中
      */
     public String getWebAuthAccessTokenFromCache(String openid);
