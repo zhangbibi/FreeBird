@@ -10,6 +10,7 @@
         <module>wx-module</module>
         <module>fb-module</module>
         <module>config-server</module>
+        <module>wx-menu</module>
     </modules>
     <packaging>pom</packaging>
 

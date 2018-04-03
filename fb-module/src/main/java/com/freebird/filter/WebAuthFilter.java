@@ -17,53 +17,55 @@ import java.io.IOException;
  *
  * @author zhangyaping001
  */
-public class WebAuthFilter implements Filter {
-
-    private static final Logger logger = LoggerFactory.getLogger(WebAuthFilter.class);
-
-
-    private WebAuthFilterConfig config;
-
-    public void destroy() {
-        logger.info("destroy...");
-    }
-
-    public void doFilter(ServletRequest request, ServletResponse response,
-                         FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        String uri = httpRequest.getRequestURI();
-        if (config.check(uri)) {
-            authToWeb(chain, httpRequest, httpResponse);
-        } else {
-            chain.doFilter(request, response);
-        }
-    }
-
-    private void authToWeb(FilterChain chain, HttpServletRequest httpRequest,
-                           HttpServletResponse httpResponse) throws IOException,
-            ServletException {
-        String originalUrl = httpRequest.getRequestURL().toString();
-        String queryStr = httpRequest.getQueryString();
-        String code = httpRequest.getParameter("code");
-        if (StringUtils.isEmpty(code)) {
-            String url = originalUrl + "?" + (StringUtils.isEmpty(queryStr) ? "codeFlag=1" : (queryStr + "&codeFlag=1"));
-            String authUrl = config.createWxAuthUrl(url, WeixinUtilFactory.getInstance());
-            logger.info("WebAuthFilter.authToWeb no code. authUrl=" + authUrl);
-            httpResponse.sendRedirect(authUrl);
-        } else {
-            // 授权跳转之后
-            WebAuthAccessToken webAuthAccessToken = WeixinUtilFactory.getInstance().getWebAccessTokenByCode(code);
-            logger.info("WebAuthFilter.authToWeb code = " + code + ". webAuthAccessToken = " + webAuthAccessToken);
-//            String authUrl = httpRequest.getRequestURL().append(config.queryStrWithout(httpRequest, "code", "codeFlag")).toString();
+//public class WebAuthFilter implements Filter {
+//
+//    private static final Logger logger = LoggerFactory.getLogger(WebAuthFilter.class);
+//
+//
+//    private WebAuthFilterConfig config;
+//
+//    public void destroy() {
+//        logger.info("destroy...");
+//    }
+//
+//    public void doFilter(ServletRequest request, ServletResponse response,
+//                         FilterChain chain) throws IOException, ServletException {
+//        HttpServletRequest httpRequest = (HttpServletRequest) request;
+//        HttpServletResponse httpResponse = (HttpServletResponse) response;
+//
+//
+//        String uri = httpRequest.getRequestURI();
+//        if (config.check(uri)) {
+//            authToWeb(chain, httpRequest, httpResponse);
+//        } else {
+//            chain.doFilter(request, response);
+//        }
+//    }
+//
+//    private void authToWeb(FilterChain chain, HttpServletRequest httpRequest,
+//                           HttpServletResponse httpResponse) throws IOException,
+//            ServletException {
+//        String originalUrl = httpRequest.getRequestURL().toString();
+//        String queryStr = httpRequest.getQueryString();
+//        String code = httpRequest.getParameter("code");
+//        if (StringUtils.isEmpty(code)) {
+//            String url = originalUrl + "?" + (StringUtils.isEmpty(queryStr) ? "codeFlag=1" : (queryStr + "&codeFlag=1"));
+//            String authUrl = config.createWxAuthUrl(url, WeixinUtilFactory.getInstance());
+//            logger.info("WebAuthFilter.authToWeb no code. authUrl=" + authUrl);
 //            httpResponse.sendRedirect(authUrl);
-            chain.doFilter(httpRequest, httpResponse);
-        }
-    }
-
-    public void init(FilterConfig arg0) throws ServletException {
-        logger.info("WebAuthFilter init...");
-        config = new WebAuthFilterConfig();
-        config.init();
-    }
-}
+//        } else {
+//            // 授权跳转之后
+//            WebAuthAccessToken webAuthAccessToken = WeixinUtilFactory.getInstance().getWebAccessTokenByCode(code);
+//            logger.info("WebAuthFilter.authToWeb code = " + code + ". webAuthAccessToken = " + webAuthAccessToken);
+////            String authUrl = httpRequest.getRequestURL().append(config.queryStrWithout(httpRequest, "code", "codeFlag")).toString();
+////            httpResponse.sendRedirect(authUrl);
+//            chain.doFilter(httpRequest, httpResponse);
+//        }
+//    }
+//
+//    public void init(FilterConfig arg0) throws ServletException {
+//        logger.info("WebAuthFilter init...");
+//        config = new WebAuthFilterConfig();
+//        config.init();
+//    }
+//}

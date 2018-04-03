@@ -15,13 +15,18 @@
 	网页授权测试页面
 	<div id="result"></div>
 	<script type="text/javascript">
+
 		$(function() {
-			getUserInfoByWebAuth();
+			var code = util.GetArgsFromHref(location.href, "code");
+			alert(code)
+			getUserInfoByWebAuth(code);
 		});
-		function getUserInfoByWebAuth() {
-			var data = {}
+		function getUserInfoByWebAuth(code) {
+			var data = {
+				"code":code
+			}
 			var options = {
-				'url' : '/freebird/getUserInfoByWebAuth',
+				'url' : '/fb/html/getUserInfoByWebAuth',
 			}
 			var self = this;
 			var callback = function(data) {
@@ -31,6 +36,7 @@
 		}
 
 		function showalert(){
+			console.log(JSON.stringify(GetRequest()));
 			var option={
 				"title":"HelloWorld",
 				"content":"这是内容这是内容这是内容"
@@ -47,6 +53,10 @@
 	</script>
 	<button onclick="showalert();">alert </button>
 	<button onclick="showconfim();">confim </button>
+	<span>
+
+
+	</span>
 
 </body>
 </html>

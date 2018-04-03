@@ -4,6 +4,7 @@ import com.freebird.controller.WechatRequestController;
 import com.freebird.wx.common.message.resp.TextMessage;
 import com.freebird.wx.common.util.MessageUtil;
 import com.freebird.wx.common.util.SignUtil;
+import com.freebird.wx.common.wx.WebAuthAccessToken;
 import com.freebird.wx.common.wx.WeixinUtil;
 import com.freebird.wx.common.wx.WeixinUtilFactory;
 import org.apache.commons.lang3.StringUtils;
@@ -71,32 +72,30 @@ public class WechatRequestService {
     }
 
     public Map<String, Object> getUserInfoByWebAuth(HttpServletRequest request) {
+        String code = request.getParameter("code");
         WeixinUtil util = WeixinUtilFactory.getInstance();
-        String openid = null;
+        WebAuthAccessToken webAccessToken = util.getWebAccessTokenByCode(code);
         String access_token = null;
-        openid = ;
+        String openid = webAccessToken.getOpenid();
         if (StringUtils.isEmpty(openid)) {
-            logger.info("WechatRequestServiceImpl.getUserInfoByWebAuth openid is null");
+            logger.info("WechatRequestServiceImpl.getWebAccessTokenByCode. openid is null");
             return null;
         }
-        access_token = util.getWebAuthAccessTokenFromCache(openid);
+        access_token = webAccessToken.getAccess_token();
         if (StringUtils.isEmpty(access_token)) {
             logger.info("WechatRequestServiceImpl.getUserInfoByWebAuth redis auth_access_token is null");
             return null;
         }
         logger.info("WechatRequestServiceImpl.getUserInfoByWebAuth: openid = " + openid + ". auth_access_token = " + access_token);
         Map<String, Object> baseUserInfo = util.getBaseUserInfoByAuth(access_token, openid);
-        if (baseUserInfo == null) {
-            access_token = util.getWebAuthAccessTokenFromCache(openid);
-            baseUserInfo = util.getBaseUserInfoByAuth(access_token, openid);
-        }
         return baseUserInfo;
     }
 
     public String getOpenidByWebAuth(HttpServletRequest request) {
         WeixinUtil util = WeixinUtilFactory.getInstance();
-        String openid = util.getOpenidFromCache(request);
-        return openid;
+//        String openid = util.getOpenidFromCache(request);
+
+        return "";
     }
 
     public Map<String, String> getJSSDKSignature(String url) {

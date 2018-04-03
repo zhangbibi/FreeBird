@@ -26,53 +26,53 @@ public class WebAuthFilterConfig {
 
     List<String> uriList = new ArrayList<String>();
 
-    public void init() {
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(
-                    this.getClass().getResource("/AuthURLs.txt").getPath())));
-            String uri = br.readLine();
-            while (StringUtils.isNotEmpty(uri)) {
-                uriList.add(uri.trim());
-                uri = br.readLine();
-            }
-        } catch (Exception e) {
-            logger.error("parse AuthURLs.txt exception", e);
-        } finally {
-            try {
-                br.close();
-            } catch (IOException e) {
-                logger.error("close BufferedReader exception", e);
-            }
-        }
-    }
+//    public void init() {
+//        BufferedReader br = null;
+//        try {
+//            br = new BufferedReader(new InputStreamReader(new FileInputStream(
+//                    this.getClass().getResource("/AuthURLs.txt").getPath())));
+//            String uri = br.readLine();
+//            while (StringUtils.isNotEmpty(uri)) {
+//                uriList.add(uri.trim());
+//                uri = br.readLine();
+//            }
+//        } catch (Exception e) {
+//            logger.error("parse AuthURLs.txt exception", e);
+//        } finally {
+//            try {
+//                br.close();
+//            } catch (IOException e) {
+//                logger.error("close BufferedReader exception", e);
+//            }
+//        }
+//    }
 
-    public boolean check(String uri) {
-        if (CollectionUtils.isEmpty(uriList)) {
-            logger.info("uriList is empty.");
-            return false;
-        }
-
-        for (String temp : uriList) {
-            if (temp.equals(uri)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean inArray(String key, String[] keys) {
-        if (keys == null || keys.length <= 0) {
-            return false;
-        }
-
-        for (String temp : keys) {
-            if (temp.equals(key)) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    public boolean check(String uri) {
+//        if (CollectionUtils.isEmpty(uriList)) {
+//            logger.info("uriList is empty.");
+//            return false;
+//        }
+//
+//        for (String temp : uriList) {
+//            if (temp.equals(uri)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//    private static boolean inArray(String key, String[] keys) {
+//        if (keys == null || keys.length <= 0) {
+//            return false;
+//        }
+//
+//        for (String temp : keys) {
+//            if (temp.equals(key)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     public String createWxAuthUrl(String url, WeixinUtil weixinUtil) {
         return WeixinHttpURLSet.WX_AUTH_URL.replace("APPID", weixinUtil.getAppid()).replace("REDIRECT_URI", URLEncoder.encode(url));
